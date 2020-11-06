@@ -12,10 +12,15 @@ export default function App() {
     if (newToDo === "") {
       return;
     }
+    let presentTask = list.map(item => item.task);
+    if (presentTask.includes(newToDo)) {
+      setEditItem("");
+      return;
+    }
     let newToDoObj = {
       task: newToDo,
       edit: false
-    };
+    }
     let newList = [...list, newToDoObj];
     setList(newList);
     setNewItem("");
@@ -39,7 +44,7 @@ export default function App() {
     listToUpdate.splice(index, 1);
     setList(listToUpdate);
   };
-
+  
   const handleEdit = (index) => {
     let editObj = list[index];
     editObj.edit = true;
@@ -60,6 +65,7 @@ export default function App() {
           task={item.task}
           edit={item.edit}
           key={index}
+          serial={index}
           editItem={editItem}
           handleEditChange={handleEditChange}
           saveEditToDo={saveEditToDo}
