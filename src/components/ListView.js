@@ -18,7 +18,7 @@ export default function ListView({
           task
         ) : (
           <EditBox
-            editItem={task}
+            editItem={editItem}
             handleEditChange={handleEditChange}
             saveEditToDo={saveEditToDo}
           />
